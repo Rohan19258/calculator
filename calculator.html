@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Calculator</title>
+    <style>
+      h1{
+          color: teal;
+          text-align: center;
+          font-size: 40px;
+      }
+      #container{
+          width: 25%;
+          height: 400px;
+          margin: auto;
+          /* border: 1px solid red; */
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          border-radius: 5px;
+      }
+      #display{
+          width: 90%;
+          height: 50px;
+          /* border: 1px solid red; */
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          
+          border-radius: 5px;
+          margin: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 25px;
+          overflow: hidden;
+          
+          
+          
+      }
+      #buttons{
+         display: grid;
+         grid-template-columns: repeat(4,1fr);
+         grid-template-rows: repeat(4,50px);
+         gap: 7px;
+         
+         padding: 20px;
+         
+         
+      }
+      #buttons>div{
+        
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        
+      }
+      #box{
+        width: 80%;
+        margin: auto;
+        padding-top: 40px;
+      }
+      #buttons>div:hover{
+          background-color: teal;
+
+      }
+      .black{
+          background-color: black;
+          color: white;
+      }
+      #red{
+          background-color: red;
+      }
+      @media all and (min-width:280px) and (max-width:480px){
+        #container{
+          width: 70%;
+          height: 350px;
+          margin: auto;
+          /* border: 1px solid red; */
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          border-radius: 5px;
+          padding: 15px;
+        }
+        
+      h1{
+          color: teal;
+          text-align: center;
+          font-size: 25px;
+      }
+      }
+    </style>
+</head>
+<body>
+    
+        <h1>10x Calculator</h1>
+    
+    <div id="container">
+        <div id="box">
+
+            <div id="display"></div>
+            <div id="buttons">
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div class="black">+</div>
+                  <div>4</div>
+                  <div>5</div>
+                  <div>6</div>
+                  <div class="black">.</div>
+                  <div>7</div>
+                  <div>8</div>
+                  <div>9</div>
+                  <div class="black">*</div>
+                  <div id="red">C</div>
+                  <div>0</div>
+                  <div class="black">=</div>
+                  <div class="black">/</div>
+            </div>
+        </div>
+        </div>
+
+</body>
+</html>
+<script>
+    let key=document.querySelectorAll("#buttons>div")
+    
+    let bag=""
+     for(let i=0; i<key.length; i++){
+         key[i].addEventListener("click",calculate)
+     }
+      function calculate(event){
+
+         let Number=event.target.innerText
+           if(Number=="C" ){
+               bag=""
+            document.getElementById("display").innerText=""
+           }else if(Number=="="){
+            document.getElementById("display").innerText=eval(bag)
+           }else{
+
+               bag=bag+Number
+            document.getElementById("display").innerText=bag
+           }
+      }
+      
+      
+</script>
+
+
